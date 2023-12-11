@@ -4,7 +4,22 @@
 */
 
 function isPalindrome(str) {
+  str=str.toLowerCase();
+  left=0;
+  right=str.length-1;
+  while(left<=right){
+    if (!isLetter(str[left])) left+=1
+    else if (!isLetter(str[right])) right-=1
+    else if(str[left]==str[right]){
+      left+=1;
+      right-=1;
+    }
+    else return false;
+  }
   return true;
+}
+function isLetter(char) {
+  return char >= 'a' && char <= 'z';
 }
 
 module.exports = isPalindrome;
