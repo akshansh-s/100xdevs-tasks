@@ -7,8 +7,14 @@
     let todoState = [];
     let oldTodoState = [];
 
-    function addTodoToDom() {
-      
+    function addTodoToDom(newTodo) {
+      const todoDiv = document.createElement('singleTodo');
+      todoDiv.innerHTML = `
+      <h3>${newTodo.title}</h3>
+      <p>${newTodo.description}</p>
+      <button onclick="removeTodo(${newTodo.id})">Remove</button>`;
+
+      document.getElementById("todos").appendChild(todoDiv);
     }
 
     function removeTodoFromDom(todo) {
@@ -29,8 +35,10 @@
       const deleted = [];
       const updated = [];
       // calculate these 3 arrays
-      // call addTodo, removeTodo, updateTodo functions on each of the
-      // elements
+      // call addTodo, removeTodo, updateTodo functions on each of the elements
+      addTodoToDom(added);
+      removeTodoFromDom(deleted);
+      updateTodoInDom(updated);
       oldTodoState = newTodos;
     }
 
