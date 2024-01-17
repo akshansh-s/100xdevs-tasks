@@ -40,7 +40,46 @@
       // 1. added
       // 2. deleted
       // 3. updated
-      
+
+      //added
+      for (let i = 0; i < newTodos.length; i++) {
+        let isAdded=false;
+        for (let j = 0; j < oldTodoState.length; j++) {
+          if (newTodos[i].id === oldTodoState[j]){
+            isAdded=false;
+          }
+        }
+        if (isAdded) {
+          added.push(newTodos[i]);
+        }
+      }
+
+      //deleted
+      for (let i = 0; i < oldTodoState.length; i++) {
+        let isDeleted=false;
+        for (let j = 0; j < newTodos.length; j++) {
+          if (newTodos[i].id === oldTodoState[j]){
+            isDeleted=false;
+          }
+        }
+        if (isDeleted) {
+          deleted.push(oldTodoState[i]);
+        }
+      }
+
+      //update
+      for (let i = 0; i < newTodos.length; i++) {
+        for (let j = 0; j < oldTodoState.length; j++) {
+          if (newTodos[i].id === oldTodoState[j].id && newTodos[i].title !== oldTodoState[j].title) {
+            updated.push(newTodos[i]);
+            break;
+          }
+          else if (newTodos[i].id === oldTodoState[j].id && newTodos[i].description !== oldTodoState[j].description){
+            updated.push(newTodos[i]);
+            break;
+          }
+        }
+      }
 
       const added = [];
       const deleted = [];
