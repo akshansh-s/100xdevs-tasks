@@ -12,9 +12,17 @@
       todoDiv.id = `todo-${newTodo.id}`;
       todoDiv.innerHTML = `
       <h3>${newTodo.title}</h3>
-      <p>${newTodo.description}</p>`;
+      <p>${newTodo.description}</p>
+      <button onclick="deleteTodo(${newTodo.id})">Delete</button>`;
 
       document.getElementById("todos").appendChild(todoDiv);
+    }
+
+    function deleteTodo(todoId) {
+      // Filter out the todo item to be deleted
+      todoState = todoState.filter(todo => todo.id !== todoId);
+      // Update the state to reflect the deletion
+      updateState(todoState);
     }
 
     function removeTodoFromDom(todoId) {
@@ -35,8 +43,6 @@
     }
 
     function updateState(newTodos) {
-      console.log("newTodos", newTodos);
-      console.log("oldTodoState", oldTodoState);
       // calculate the diff b/w newTodos and oldTodos.
       // More specifically, find out what todos are - 
       // 1. added
