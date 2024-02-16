@@ -8,11 +8,20 @@ const Assignment3 = () => {
         { name: 'Chips', value: 20 },
         { name: 'Onion', value: 30 },
         { name: 'Tomato', value: 30 },
-        // Add more items as needed
+        { name: 'Potato', value: 30 }
     ]);
 
     // Your code starts here
-    const totalValue = 0;
+    const totalValue = useMemo(()=>{
+        // var ans=0;
+        // for(let i=0;i<items.length;i++){
+        //     ans=ans+ items[i].value;
+        // }
+        //return ans;
+        //or use-
+        return items.reduce((acc, item) => acc + item.value, 0);
+        
+    },[]);
     // Your code ends here
     return (
         <div>
