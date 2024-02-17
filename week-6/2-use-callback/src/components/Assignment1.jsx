@@ -8,11 +8,11 @@ export function Assignment1() {
 
     // Your code starts here
     const increment= useCallback(()=> {
-        setCount(count+1);
+        setCount(count=>count+1);
     },[count]);
 
     const decrement= useCallback(()=> {
-        setCount(count-1);
+        setCount(count=>count-1);
     },[count]);
     // Your code ends here
 
